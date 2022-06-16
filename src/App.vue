@@ -4,7 +4,6 @@ import SideBar from "./components/sidebar.vue";
 
 <template>
   <SideBar />
-
   <main>
     <router-view></router-view>
   </main>
@@ -36,5 +35,26 @@ main {
   color: #365f95;
   font-family: 'Fredoka', sans-serif;
 
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: hsl(141, 53%, 53%);
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 </style>

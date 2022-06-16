@@ -6,15 +6,11 @@
       <img src="http://via.placeholder.com/640x360" alt="tile image">
     </div>
 
-
-
     <div class="contents">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem error a accusantium neque, quos mollitia sit
         quibusdam.</p>
 
-
     </div>
-
     <div class="buttons">
 
       <button class="button is-primary is-small">
@@ -69,6 +65,7 @@
 img {
   width: 100%;
   height: 100%;
+  user-select: none;
   object-fit: cover;
   object-position: center;
 }

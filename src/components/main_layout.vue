@@ -29,14 +29,29 @@ section {
   padding: 1rem;
 }
 
-
 .list {
   display: grid;
   gap: 2rem;
   grid-auto-rows: 8rem;
 }
 
-.list::-webkit-scrollbar {
-  display: initial;
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    overflow: auto;
+  }
+
+  section {
+    overflow: unset;
+  }
+
 }
 </style>
