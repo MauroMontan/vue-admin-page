@@ -6,9 +6,7 @@ import SideBar from "./components/sidebar.vue";
   <SideBar />
 
   <main>
-    <p v-for="i in 300">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, ab excepturi. Est ipsa
-      architecto itaque ea,
-      dolorem blanditiis nam debitis consequuntur minima, dicta odio ullam labore soluta iste, nesciunt numquam!</p>
+    <router-view></router-view>
   </main>
 </template>
 
@@ -25,10 +23,7 @@ import SideBar from "./components/sidebar.vue";
 main {
   width: 100%;
   height: 100%;
-  overflow: auto;
-  padding: 1rem;
-  display: grid;
-  gap: 2rem;
+  overflow: hidden;
 }
 
 #app {
@@ -41,9 +36,5 @@ main {
   color: #365f95;
   font-family: 'Fredoka', sans-serif;
 
-}
-
-::-webkit-scrollbar {
-  display: none;
 }
 </style>

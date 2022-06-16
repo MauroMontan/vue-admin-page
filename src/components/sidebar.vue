@@ -101,6 +101,11 @@ img {
   padding: 1rem;
 }
 
+button {
+  gap: 0.1rem;
+  justify-content: unset;
+}
+
 .bottom-content {
   width: 100%;
   height: fit-content;
