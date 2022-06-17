@@ -9,7 +9,7 @@ const project = ref(
     title: "name",
     description: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
     video: "http://www.youtube.com/watch",
-    tools: ["photoshop", "WACON", "Zbrush"],
+    tools: [],
   }
 );
 

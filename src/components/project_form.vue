@@ -1,15 +1,37 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref } from 'vue';
 import { Project } from "../interfaces";
 interface Props {
   project: Project,
 }
 
 const props = defineProps<Props>();
-const project = computed(() => props.project);
+
+const currentTag = ref("");
+
+const project = ref(props.project);
+
+
+const addTag = (tag: string): void => {
+  if (project.value.tools!.length <= 6) {
+
+    if (currentTag.value.length <= 20 && currentTag.value !== "") {
+      project.value.tools?.push(tag);
+      currentTag.value = "";
+    }
+  }
+}
+
+const tagColors = ref(
+  ["is-primary", "is-info", "is-warning", "is-danger", "is-link", "is-success", "is-dark"]
+);
+const removeSelectedTag = (tool: string): void => {
+  let newTools = project.value.tools?.filter((tag) => tag !== tool);
+
+  project.value.tools = newTools;
+}
 
 </script>
-
 
 <template>
   <div class="form">
@@ -31,8 +53,6 @@ const project = computed(() => props.project);
       </div>
     </div>
 
-
-
     <div class="field">
       <label class="label"> Video del projecto </label>
       <div class="control">
@@ -41,32 +61,32 @@ const project = computed(() => props.project);
       </div>
     </div>
 
-
-
-    <label for="onput">Añade etiquetas</label>
+    <label class="label">Añade etiquetas</label>
     <div class="field has-addons">
       <div class="control">
-        <input class="input" type="text" placeholder="añade tecnologias que usaste">
+        <input @keypress.enter="addTag(currentTag)" v-model="currentTag" class="input is-info " type="text"
+          placeholder="Máximo 6 etiquetas">
       </div>
       <div class="control">
-        <a class="button is-info">
+        <a @click="addTag(currentTag)" class="button is-info">
           añadir
         </a>
       </div>
     </div>
 
     <div class="tags are-medium">
-      <span v-for="tool in project.tools" class="tag is-warning is-medium">
-        {{ tool }}
-        <button class="delete is-small"></button>
-      </span>
-
+      <TransitionGroup name="list" tag="div">
+        <span v-for="(tool, i) in project.tools" :class="tagColors[i]" class="tag is-medium" :key="i">
+          {{ tool }}
+          <button @click="removeSelectedTag(tool)" class="delete is-small"></button>
+        </span>
+      </TransitionGroup>
     </div>
 
 
     <div class="field is-grouped is-grouped-right ">
       <div class="control">
-        <button class="button is-link">Submit</button>
+        <button class="button is-link">submit</button>
       </div>
     </div>
 
@@ -80,13 +100,26 @@ const project = computed(() => props.project);
   background-color: white;
   padding: 1rem;
   border-radius: 0.5rem;
+  transition: all 1s ease;
 }
 
 
 input {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: 'Fredoka', sans-serif;
 
+}
+
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(10px);
 }
 </style>
 
