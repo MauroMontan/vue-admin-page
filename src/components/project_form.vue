@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { Project } from "../interfaces";
 
 interface Props {
   project: Project,
 }
 
+interface Emits {
+  (event: "cancel"): void,
+}
+
 const props = defineProps<Props>();
+
+const emit = defineEmits<Emits>();
 
 const currentTag = ref("");
 
@@ -14,7 +20,7 @@ const addTag = (tag: string): void => {
   if (props.project.tools!.length <= 6) {
 
     if (currentTag.value.length <= 20 && currentTag.value !== "") {
-      props.project.tools?.push(tag);
+      props.project.tools!.push(tag);
       currentTag.value = "";
     }
   }
@@ -29,6 +35,7 @@ const removeSelectedTag = (tool: string): void => {
   props.project.tools = newTools;
 }
 
+const isProjecteEmpty = computed(() => props.project.title !== "" && props.project.description !== "");
 </script>
 
 <template>
@@ -89,7 +96,7 @@ const removeSelectedTag = (tool: string): void => {
 
     <div class="field is-grouped is-grouped-right ">
       <div class="control">
-        <button class="button is-danger">cancel</button>
+        <button v-if="isProjecteEmpty" @click="emit('cancel')" class="button is-danger">cancelar</button>
       </div>
 
       <div class="control">

@@ -13,6 +13,9 @@ const setPreview = (project: Project): void => {
   projectStore.setCurrentProject(project);
 }
 
+const emptyForm = (): void => {
+  projectStore.emptyProject();
+}
 
 const currentProject = computed(() => {
   return projectStore.project;
@@ -23,11 +26,12 @@ const currentProject = computed(() => {
 <template>
   <MainLayout>
     <template v-slot:list>
-      <ListTile v-for="(p, i) in projectStore.projectList" @preview="setPreview(p)" :key="i" />
+      <ListTile v-for="(p, i) in projectStore.projectList" :listItem="p" @preview="setPreview(p)" :key="i" />
     </template>
     <!-- form -->
     <template v-slot:form>
-      <ProjectForm :project="currentProject" />
+
+      <ProjectForm @cancel="emptyForm" :project="currentProject" />
     </template>
   </MainLayout>
 </template>

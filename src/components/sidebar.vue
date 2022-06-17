@@ -115,4 +115,10 @@ button {
   padding: 1rem;
   justify-content: flex-end;
 }
+
+@media (max-width:768px) {
+  .sidebar {
+    display: none;
+  }
+}
 </style>

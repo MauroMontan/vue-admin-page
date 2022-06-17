@@ -1,22 +1,30 @@
 <script setup lang="ts" >
+import { computed } from '@vue/reactivity';
 
 
 interface Emits {
   (event: "preview"): void,
 }
 
+interface Props {
+  listItem: any,
+}
+const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
+
+const project = computed(() => props.listItem);
+
 </script>
 
 <template>
   <div class="tile">
     <div class="image">
-      <img src="http://via.placeholder.com/640x360" alt="tile image">
+      <img :src="project.image" alt="tile image">
     </div>
 
     <div class="contents">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem error a accusantium neque, quos mollitia sit
-        quibusdam.</p>
+      <h1>{{ project.title }}</h1>
+      <p v-text="project.description" />
 
     </div>
     <div class="buttons">
@@ -50,7 +58,8 @@ const emit = defineEmits<Emits>();
   padding: 1rem;
   border-radius: 1rem;
   display: flex;
-  align-items: center;
+  overflow: hidden;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -60,8 +69,8 @@ const emit = defineEmits<Emits>();
 }
 
 .image {
-  width: 30%;
-  height: 100%;
+  width: 7rem;
+  height: 7rem;
   overflow: hidden;
   border-radius: 0.5rem;
 }
@@ -84,13 +93,20 @@ img {
 
 .contents {
 
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  display: flex;
+  width: 20rem;
+  height: fit-content;
+  overflow-wrap: break-word;
+}
 
-  flex-direction: column;
-  align-items: center;
-  text-overflow: ellipsis;
+.comntents p {
+  color: blue;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.contents h1 {
+  color: tomato;
+  font-size: 1.3rem;
+
 }
 </style>

@@ -32,7 +32,7 @@ section {
 .list {
   display: grid;
   gap: 2rem;
-  grid-auto-rows: 8rem;
+  grid-auto-rows: min-content;
 }
 
 
