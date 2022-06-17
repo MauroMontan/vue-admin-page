@@ -1,4 +1,12 @@
-<script setup lang="ts" ></script>
+<script setup lang="ts" >
+
+
+interface Emits {
+  (event: "preview"): void,
+}
+
+const emit = defineEmits<Emits>();
+</script>
 
 <template>
   <div class="tile">
@@ -13,7 +21,7 @@
     </div>
     <div class="buttons">
 
-      <button class="button is-primary is-small">
+      <button @click="emit('preview')" class="button is-primary is-small">
         <span class="icon is-small">
           <i class="fa-solid fa-eye"></i>
         </span>

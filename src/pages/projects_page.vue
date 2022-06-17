@@ -2,27 +2,65 @@
 import MainLayout from '../components/main_layout.vue';
 import ListTile from '../components/list_tile.vue';
 import ProjectForm from '../components/project_form.vue';
-import { ref } from 'vue';
+import { computed, ref, Ref } from 'vue';
+import { Project } from '../interfaces';
 
-const project = ref(
+const projectListTest = ref([
   {
-    title: "name",
-    description: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-    video: "http://www.youtube.com/watch",
+    title: "p1",
+    description: "",
+    video: "",
     tools: [],
-  }
+  },
+
+  {
+    title: "p2",
+    description: "",
+    video: "",
+    tools: [],
+  },
+
+
+  {
+    title: "p2",
+    description: "",
+    video: "",
+    tools: [],
+  },
+]);
+
+
+const currentProject = ref({
+  title: "",
+  description: "",
+  video: "",
+  tools: [],
+}
+
 );
+
+const setPreview = (project: any): void => {
+
+  currentProject.value = project;
+  console.log(project)
+}
+
+
+const x = computed(() => {
+  return currentProject.value;
+});
 
 </script>
 
 <template>
+  <h1>{{ x }}</h1>
   <MainLayout>
     <template v-slot:list>
-      <ListTile v-for="i in 5" />
+      <ListTile v-for="(p, i) in projectListTest" @preview="setPreview(p)" :key="i" />
     </template>
     <!-- form -->
     <template v-slot:form>
-      <ProjectForm :project="project" />
+      <ProjectForm :project="x" />
     </template>
   </MainLayout>
 </template>
