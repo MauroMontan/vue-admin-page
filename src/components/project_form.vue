@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Project } from "../interfaces";
+
 interface Props {
   project: Project,
 }
@@ -9,14 +10,11 @@ const props = defineProps<Props>();
 
 const currentTag = ref("");
 
-const project = ref(props.project);
-
-
 const addTag = (tag: string): void => {
-  if (project.value.tools!.length <= 6) {
+  if (props.project.tools!.length <= 6) {
 
     if (currentTag.value.length <= 20 && currentTag.value !== "") {
-      project.value.tools?.push(tag);
+      props.project.tools?.push(tag);
       currentTag.value = "";
     }
   }
@@ -26,16 +24,15 @@ const tagColors = ref(
   ["is-primary", "is-info", "is-warning", "is-danger", "is-link", "is-success", "is-dark"]
 );
 const removeSelectedTag = (tool: string): void => {
-  let newTools = project.value.tools?.filter((tag) => tag !== tool);
+  let newTools = props.project.tools?.filter((tag) => tag !== tool);
 
-  project.value.tools = newTools;
+  props.project.tools = newTools;
 }
 
 </script>
 
 <template>
   <div class="form">
-
     <div class="field">
       <label class="label">Titulo del proyecto: </label>
       <div class="control">
@@ -54,7 +51,13 @@ const removeSelectedTag = (tool: string): void => {
     </div>
 
     <div class="field">
-      <label class="label"> Video del projecto </label>
+      <label class="label">Imagen del proyecto: </label>
+      <div class="control">
+        <input v-model="project.image" class="input is-primary" type="text" placeholder="preview image">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label"> Video del proyecto </label>
       <div class="control">
         <input v-model="project.video" class="input is-primary" type="text"
           placeholder="si tu projecto no tiene uno, dejalo en blanco">
@@ -86,6 +89,10 @@ const removeSelectedTag = (tool: string): void => {
 
     <div class="field is-grouped is-grouped-right ">
       <div class="control">
+        <button class="button is-danger">cancel</button>
+      </div>
+
+      <div class="control">
         <button class="button is-link">submit</button>
       </div>
     </div>
@@ -99,8 +106,9 @@ const removeSelectedTag = (tool: string): void => {
   width: 100%;
   background-color: white;
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   transition: all 1s ease;
+  height: fit-content;
 }
 
 
