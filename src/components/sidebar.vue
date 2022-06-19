@@ -2,7 +2,43 @@
 import { reactive } from 'vue';
 
 
-const links = reactive(["Personal", "fotos de perfil", "ver projectos", "ver habilidades", "modelos"]);
+const links = reactive([
+  {
+    to: "/personal-info",
+    icon: "fa-user",
+    name: "Profile"
+  },
+  {
+    to: "/about-you",
+    icon: "fa-music",
+    name: "About you"
+  },
+  {
+    to: "/images",
+    icon: "fa-image",
+    name: "Images"
+  },
+  {
+    to: "/projects",
+    icon: "fa-folder",
+    name: "Projects"
+  },
+  {
+    to: "/skills",
+    icon: "fa-brain",
+    name: "Skills"
+  },
+  {
+    to: "/blogs",
+    icon: "fa-book",
+    name: "Blogs"
+  },
+  {
+    to: "/documentation",
+    icon: "fa-file",
+    name: "Docs"
+  },
+]);
 
 </script>
 
@@ -21,11 +57,11 @@ const links = reactive(["Personal", "fotos de perfil", "ver projectos", "ver hab
     </div>
 
     <div class="list">
-      <button v-for="link in links" class="button is-link is-dark ">
+      <button v-for="link in links" class="button is-light">
         <span class="icon">
-          <i class="fab fa-github"></i>
+          <i class="fa-solid" :class="link.icon"></i>
         </span>
-        <span>{{ link }}</span>
+        <span>{{ link.name }}</span>
       </button>
     </div>
     <div class="bottom-content">
@@ -46,7 +82,7 @@ const links = reactive(["Personal", "fotos de perfil", "ver projectos", "ver hab
   display: flex;
   flex-direction: column;
   color: white;
-  background-color: #183153;
+  background-color: #bca0ff;
 }
 
 .account {

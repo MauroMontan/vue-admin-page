@@ -17,12 +17,15 @@ import SideBar from "./components/sidebar.vue";
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  user-zoom: none;
+  user-select: none;
 }
 
 main {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  display: flex;
 }
 
 #app {
@@ -35,6 +38,14 @@ main {
   color: #365f95;
   font-family: 'Fredoka', sans-serif;
 
+}
+
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
 /* width */
