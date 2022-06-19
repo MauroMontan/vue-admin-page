@@ -6,17 +6,21 @@
   <div class="home-page">
     <div class="column">
       <div class="title">
-        <h1>Create simple things</h1>
+        <h1> Keep your portfolio data in one place</h1>
       </div>
       <div class="info-card content">
-        <h3>For who is this?</h3>
-        <p>Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem
-          pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud
-          nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia
-          pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem
-          duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt
-          duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris
-          sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.</p>
+        <h3> <i class="fa-solid fa-circle-info"></i> Pourpuse</h3>
+        <p>Sabemos que todos los seres vivos crecemos y cambiamos todo el tiempo. Por eso es importante que
+          tengas la información que te representa y te define de una manera simple, organizada y escalable. Puede
+          llevarte tiempo aprender algo nuevo, pero añadirlo a tu portafolio no tiene que ser tan dificil !</p>
+      </div>
+      <div class="info-card content get-started">
+        <h3> <i class="fa-solid fa-helmet-safety"></i> Get started</h3>
+        <p>Contruye las bases para desarrollar tu portafolio.</p>
+        <div class="actions">
+          <button class="button is-warning is-light ">get started</button>
+        </div>
+
       </div>
     </div>
 
@@ -45,6 +49,13 @@ h1 {
   font-size: 2.5rem;
 }
 
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
 .column {
   background-color: white;
   display: flex;
@@ -55,8 +66,13 @@ h1 {
 
 .info-card {
   background-color: #f0f1f3;
+  width: 100%;
   padding: 1rem;
   border-radius: 1rem;
+}
+
+.get-started {
+  background-color: #ffea9e;
 }
 
 img {
