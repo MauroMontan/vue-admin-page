@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SideBar from "./components/sidebar.vue";
+import SideBar from './components/sidebar.vue';
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import SideBar from "./components/sidebar.vue";
 </template>
 
 <style>
-@import "bulma/css/bulma.css";
+@import 'bulma/css/bulma.css';
 @import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
 
 * {
@@ -36,9 +36,7 @@ main {
   background-color: #f0f1f3;
   color: #365f95;
   font-family: 'Fredoka', sans-serif;
-
 }
-
 
 img {
   -webkit-user-drag: none;

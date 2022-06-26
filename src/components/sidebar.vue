@@ -1,54 +1,56 @@
-<script setup lang="ts" >
+<script setup lang="ts">
 import { reactive } from 'vue';
-
+import SidebarItem from './sidebar_item.vue';
 
 const links = reactive([
   {
-    to: "/personal-info",
-    icon: "fa-user",
-    name: "Profile"
+    to: '/personal-info',
+    icon: 'fa-user',
+    name: 'Profile',
   },
   {
-    to: "/about-you",
-    icon: "fa-music",
-    name: "About you"
+    to: '/about-you',
+    icon: 'fa-music',
+    name: 'About you',
   },
   {
-    to: "/images",
-    icon: "fa-image",
-    name: "Images"
+    to: '/images',
+    icon: 'fa-image',
+    name: 'Images',
   },
   {
-    to: "/projects",
-    icon: "fa-folder",
-    name: "Projects"
+    to: '/projects',
+    icon: 'fa-folder',
+    name: 'Projects',
   },
   {
-    to: "/skills",
-    icon: "fa-brain",
-    name: "Skills"
+    to: '/skills',
+    icon: 'fa-brain',
+    name: 'Skills',
   },
   {
-    to: "/blogs",
-    icon: "fa-book",
-    name: "Blogs"
+    to: '/blogs',
+    icon: 'fa-book',
+    name: 'Blogs',
   },
   {
-    to: "/documentation",
-    icon: "fa-file",
-    name: "Docs"
+    to: '/documentation',
+    icon: 'fa-file',
+    name: 'Docs',
   },
 ]);
-
 </script>
 
 <template>
   <aside class="sidebar">
-
     <div class="account">
       <div class="user-info">
         <div class="photo">
-          <img class="is-rounded" src="https://pickaface.net/gallery/avatar/20160625_050020_889_FAKE.png" alt="avatar">
+          <img
+            class="is-rounded"
+            src="https://pickaface.net/gallery/avatar/20160625_050020_889_FAKE.png"
+            alt="avatar"
+          />
         </div>
         <div class="email">
           <p>mauroanastacio@outlook.com</p>
@@ -57,12 +59,9 @@ const links = reactive([
     </div>
 
     <div class="list">
-      <button v-for="link in links" class="button is-light">
-        <span class="icon">
-          <i class="fa-solid" :class="link.icon"></i>
-        </span>
-        <span>{{ link.name }}</span>
-      </button>
+      <!-- list item -->
+      <SidebarItem v-for="link in links" :link="link" />
+      <!---->
     </div>
     <div class="bottom-content">
       <span class="icon-text">
@@ -75,13 +74,13 @@ const links = reactive([
   </aside>
 </template>
 
-<style scoped >
+<style scoped>
 .sidebar {
   width: 12rem;
   height: 100%;
   display: flex;
   flex-direction: column;
-  color: white;
+  color: rgb(240, 241, 243);
   background-color: #bca0ff;
 }
 
@@ -120,7 +119,6 @@ const links = reactive([
   height: 90%;
 }
 
-
 img {
   width: 100%;
   height: 100%;
@@ -134,7 +132,8 @@ img {
   display: grid;
   gap: 0.5rem;
   align-items: center;
-  padding: 1rem;
+  overflow: hidden;
+  padding: 0.5rem;
 }
 
 button {
@@ -152,7 +151,7 @@ button {
   justify-content: flex-end;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .sidebar {
     display: none;
   }

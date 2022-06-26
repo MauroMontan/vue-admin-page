@@ -1,45 +1,41 @@
-<script setup lang="ts" >
+<script setup lang="ts">
 import { computed } from '@vue/reactivity';
 
-
 interface Emits {
-  (event: "preview"): void,
+  (event: 'preview'): void;
 }
 
 interface Props {
-  listItem: any,
+  listItem: any;
 }
 const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
 
 const project = computed(() => props.listItem);
-
 </script>
 
 <template>
   <div class="tile">
     <div class="image">
-      <img :src="project.image" alt="tile image">
+      <img :src="project.image" alt="tile image" />
     </div>
 
     <div class="contents">
       <h1>{{ project.title }}</h1>
       <p v-text="project.description" />
-
     </div>
     <div class="buttons">
-
       <button @click="emit('preview')" class="button is-primary is-small">
         <span class="icon is-small">
           <i class="fa-solid fa-eye"></i>
         </span>
       </button>
-      <button class="button is-warning is-small ">
-        <span class="icon is-small ">
+      <button class="button is-warning is-small">
+        <span class="icon is-small">
           <i class="fa-solid fa-pencil"></i>
         </span>
       </button>
-      <button class="button is-danger is-small ">
+      <button class="button is-danger is-small">
         <span class="icon is-small">
           <i class="fa-solid fa-trash"></i>
         </span>
@@ -47,7 +43,6 @@ const project = computed(() => props.listItem);
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .tile {
@@ -62,7 +57,6 @@ const project = computed(() => props.listItem);
   align-items: flex-start;
   justify-content: space-between;
 }
-
 
 .buttons {
   width: min-content;
@@ -92,7 +86,6 @@ img {
 }
 
 .contents {
-
   width: 20rem;
   height: fit-content;
   overflow-wrap: break-word;
@@ -107,6 +100,5 @@ img {
 .contents h1 {
   color: tomato;
   font-size: 1.3rem;
-
 }
 </style>

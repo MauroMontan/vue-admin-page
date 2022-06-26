@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="grid">
@@ -7,10 +6,8 @@
       <slot name="list" />
     </section>
     <section class="form">
-
       <slot name="form" />
     </section>
-
   </div>
 </template>
 
@@ -35,11 +32,9 @@ section {
   grid-auto-rows: min-content;
 }
 
-
 .form {
   display: flex;
 }
-
 
 @media (max-width: 768px) {
   .grid {
@@ -50,6 +45,5 @@ section {
   section {
     overflow: unset;
   }
-
 }
 </style>
