@@ -2,17 +2,24 @@
 interface Props {
   index: number;
   step?: string;
+  has_action: boolean;
 }
 
 const props = defineProps<Props>();
 </script>
 <template>
   <div class="step-item">
+    <a
+      v-if="props.has_action"
+      href="https://go.deta.dev/deploy?repo=https://github.com/MauroMontan/express-micro-with-deta"
+      target="_blank"
+      class="fa-solid fa-rocket action"
+    ></a>
     <div class="icon">
       <p v-text="props.index" />
     </div>
     <div class="item-content">
-      <p v-html="step"></p>
+      <p class="content" v-html="step"></p>
     </div>
   </div>
 </template>
@@ -30,6 +37,27 @@ const props = defineProps<Props>();
   position: relative;
 }
 
+.action {
+  background-color: rgb(244, 120, 179);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  bottom: -1rem;
+  right: -0.5rem;
+  transition: all 0.5s ease;
+}
+
+.action:hover {
+  color: rgb(86, 51, 121);
+  transform: scale(105%);
+}
+
 .item-content {
   height: 100%;
   width: 80%;
@@ -39,8 +67,8 @@ const props = defineProps<Props>();
   align-items: center;
 }
 
-a {
-  color: rgb(169, 144, 229);
+:deep(.content a) {
+  color: tomato;
 }
 
 .icon {

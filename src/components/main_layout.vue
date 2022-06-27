@@ -15,6 +15,11 @@
 .grid {
   height: 100%;
   width: 100%;
+  background-color: white;
+  margin: auto;
+  border-radius: 1rem;
+  height: 95%;
+  width: 95%;
   overflow: hidden;
   display: grid;
   gap: 1rem;

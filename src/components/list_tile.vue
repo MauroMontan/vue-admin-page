@@ -46,7 +46,7 @@ const project = computed(() => props.listItem);
 
 <style scoped>
 .tile {
-  background-color: #ffffff;
+  background-color: rgb(240, 241, 243);
   width: 100%;
   height: 100%;
   gap: 1rem;
